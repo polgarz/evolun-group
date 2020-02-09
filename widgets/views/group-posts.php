@@ -22,7 +22,7 @@ use yii\helpers\Url;
                 'emptyText' => '<p>' . Yii::t('group', 'There are no posts') . '</p>',
                 'options' => ['tag' => false],
                 'itemOptions' => ['tag' => 'div', 'class' => 'post clearfix'],
-                'itemView' => '@app/modules/group/views/default/_post',
+                'itemView' => '@vendor/polgarz/evolun-group/views/default/_post',
                 'viewParams' => [
                     'excerpt' => true,
                     'showGroupName' => true,
