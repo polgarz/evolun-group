@@ -43,9 +43,8 @@ class GroupCoordinator extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'group_id' => 'Csoport',
-            'user_id' => 'Felhasználó',
+            'group_id' => Yii::t('group', 'Group'),
+            'user_id' => Yii::t('group', 'User'),
         ];
     }
 

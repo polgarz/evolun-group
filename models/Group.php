@@ -70,17 +70,16 @@ class Group extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Név',
-            'type' => 'Típus',
-            'description' => 'Leírás',
-            'email' => 'Email cím',
-            'created_at' => 'Létrehozva',
-            'updated_at' => 'Utoljára módosítva',
-            'created_by' => 'Létrehozta',
-            'updated_by' => 'Utoljára módosította',
-            'createdByName' => 'Létrehozta',
-            'updatedByName' => 'Utoljára módosította',
+            'name' => Yii::t('group', 'Name'),
+            'type' => Yii::t('group', 'Type'),
+            'description' => Yii::t('group', 'Description'),
+            'email' => Yii::t('group', 'Email'),
+            'created_at' => Yii::t('group', 'Created at'),
+            'updated_at' => Yii::t('group', 'Updated at'),
+            'created_by' => Yii::t('group', 'Created by'),
+            'updated_by' => Yii::t('group', 'Updated by'),
+            'createdByName' => Yii::t('group', 'Created by'),
+            'updatedByName' => Yii::t('group', 'Updated by'),
         ];
     }
 

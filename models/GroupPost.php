@@ -66,16 +66,10 @@ class GroupPost extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Bejegyzés címe',
-            'content' => 'Szöveg',
-            'group_id' => 'Group ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'created_by' => 'Created By',
-            'updated_by' => 'Updated By',
-            'createdByName' => 'Létrehozta',
-            'updatedByName' => 'Utoljára módosította',
+            'title' => Yii::t('group', 'Title'),
+            'content' => Yii::t('group', 'Content'),
+            'createdByName' => Yii::t('group', 'Created by'),
+            'updatedByName' => Yii::t('group', 'Updated by'),
         ];
     }
 

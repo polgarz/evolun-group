@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model evolun\group\user\models\User */
 
-$this->title = 'Új csoport';
+$this->title = Yii::t('group', 'New group');
 $this->params['pageHeader'] = ['title' => $this->title];
-$this->params['breadcrumbs'][] = ['label' => 'Csoportok', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('group', 'Groups'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

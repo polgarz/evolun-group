@@ -5,9 +5,9 @@ use yii\helpers\StringHelper;
 ?>
 <div class="user-block">
     <?php if ($model->createdBy): ?>
-        <img src="<?= $model->createdBy->getThumbUploadUrl('image', 's') ?>" class="img-circle img-bordered-sm" alt="Profilkép">
+        <img src="<?= $model->createdBy->getThumbUploadUrl('image', 's') ?>" class="img-circle img-bordered-sm" alt="<?= Yii::t('group', 'Profile image') ?>">
     <?php else: ?>
-        <img src="https://via.placeholder.com/100x100?text=%3F" class="img-circle img-bordered-sm" alt="Profilkép">
+        <img src="https://via.placeholder.com/100x100?text=%3F" class="img-circle img-bordered-sm" alt="<?= Yii::t('group', 'Profile image') ?>">
     <?php endif ?>
     <span class="username">
         <?php if ($model->createdByName): ?>
@@ -17,7 +17,7 @@ use yii\helpers\StringHelper;
         <?php endif ?>
 
         <?php if (Yii::$app->user->can('manageGroups', ['group' => $model->group])): ?>
-            <a href="<?= Url::to(['/group/default/delete-group-post', 'id' => $model->group_id, 'post_id' => $model->id]) ?>" class="pull-right btn-box-tool" data-confirm="Biztosan törlöd ezt a posztot?">
+            <a href="<?= Url::to(['/group/default/delete-group-post', 'id' => $model->group_id, 'post_id' => $model->id]) ?>" class="pull-right btn-box-tool" data-confirm="<?= Yii::t('group', 'Are you sure?') ?>">
                 <i class="fa fa-trash"></i>
             </a>
             <a href="<?= Url::to(['/group/default/view', 'id' => $model->group_id, 'update_group_post' => $model->id]) ?>" class="pull-right btn-box-tool">

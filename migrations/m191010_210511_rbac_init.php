@@ -17,11 +17,11 @@ class m191010_210511_rbac_init extends Migration
         $admin = $auth->getRole('admin');
 
         $manageGroups = $auth->createPermission('manageGroups');
-        $manageGroups->description = 'Hozzáadhat, módosíthat, és törölhet csoportokat';
+        $manageGroups->description = 'Can add, update, or delete groups';
         $auth->add($manageGroups);
 
         $showGroups = $auth->createPermission('showGroups');
-        $showGroups->description = 'Megtekintheti a csoportokat';
+        $showGroups->description = 'Can view groups';
         $auth->add($showGroups);
 
         // add the rule
@@ -29,7 +29,7 @@ class m191010_210511_rbac_init extends Migration
         $auth->add($rule);
 
         $manageOwnGroups = $auth->createPermission('manageOwnGroups');
-        $manageOwnGroups->description = 'Kezelheti azt a csoportot, ahol koordinátor';
+        $manageOwnGroups->description = 'Can manage own groups';
         $manageOwnGroups->ruleName = $rule->name;
         $auth->add($manageOwnGroups);
 

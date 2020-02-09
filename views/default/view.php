@@ -14,16 +14,15 @@ use evolun\group\assets\SummernoteAsset;
 SummernoteAsset::register($this);
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Csoportok', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('group', 'Groups'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['pageHeader'] = ['title' => '&nbsp;'];
 
 $this->registerJs("
     $('#summernote').summernote({
-        placeholder: 'Bejegyzés szövege',
+        placeholder: '" . Yii::t('group', 'Content') . "',
         minHeight: 100,
         maxHeight: 400,
-        lang: 'hu-HU',
         toolbar: [
             ['style', ['bold', 'italic', 'underline', 'clear']],
             ['para', ['ul', 'ol', 'paragraph']],
@@ -42,7 +41,7 @@ $this->registerJs("
 
                 <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
-                        <b>Tagok száma</b> <span class="pull-right"><?= count($model->groupUsers) ?></span>
+                        <b><?= Yii::t('group', 'Members') ?></b> <span class="pull-right"><?= count($model->groupUsers) ?></span>
                     </li>
                     <?php if (!empty($model->email)): ?>
                         <li class="list-group-item">
@@ -54,19 +53,19 @@ $this->registerJs("
                 <?php if (Yii::$app->user->can('manageGroups', ['group' => $model])): ?>
                     <div class="row">
                         <div class="col-xs-6">
-                            <?= Html::a('<i class="fa fa-pencil"></i> Módosítás', ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-block']) ?>
+                            <?= Html::a('<i class="fa fa-pencil"></i> ' . Yii::t('group', 'Update'), ['/group/default/update', 'id' => $model->id], ['class' => 'btn btn-primary btn-block']) ?>
                         </div>
                         <div class="col-xs-6">
-                            <?= Html::a('<i class="fa fa-trash"></i> Törlés', ['delete', 'id' => $model->id], ['class' => 'btn btn-danger btn-block', 'data-confirm' => 'Biztosan törlöd ezt a csoportot? Minden hozzá tartozó adat törlődni fog!']) ?>
+                            <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('group', 'Delete'), ['/group/default/delete', 'id' => $model->id], ['class' => 'btn btn-danger btn-block', 'data-confirm' => Yii::t('group', 'Are you sure? Every data belongs this group will be deleted!')]) ?>
                         </div>
                     </div>
                     <br />
                 <?php endif ?>
 
                 <?php if (!in_array(Yii::$app->user->id, array_map(function($item) { return $item->user_id; }, $model->groupUsers))): ?>
-                    <?= Html::a('<i class="fa fa-sign-in"></i> Csatlakozás a csoporthoz', ['join', 'id' => $model->id], ['class' => 'btn btn-success btn-block']) ?>
+                    <?= Html::a('<i class="fa fa-sign-in"></i> ' . Yii::t('group', 'Join the group'), ['join', 'id' => $model->id], ['class' => 'btn btn-success btn-block']) ?>
                 <?php else: ?>
-                    <?= Html::a('<i class="fa fa-sign-out"></i> Kilépés a csoportból', ['leave', 'id' => $model->id], ['class' => 'btn btn-warning btn-block']) ?>
+                    <?= Html::a('<i class="fa fa-sign-out"></i> ' . Yii::t('group', 'Leave the group'), ['leave', 'id' => $model->id], ['class' => 'btn btn-warning btn-block']) ?>
                 <?php endif ?>
 
             </div>
@@ -76,7 +75,7 @@ $this->registerJs("
 
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Koordinátorok</h3>
+                <h3 class="box-title"><?= Yii::t('group', 'Coordinators') ?></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
@@ -100,7 +99,7 @@ $this->registerJs("
         <?php if ($model->groupLinks): ?>
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Linkek</h3>
+                    <h3 class="box-title"><?= Yii::t('group', 'Links') ?></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -115,7 +114,7 @@ $this->registerJs("
         <?php if (!empty($model->description)): ?>
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Leírás</h3>
+                    <h3 class="box-title"><?= $model->getAttributeLabel('description') ?></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -130,8 +129,8 @@ $this->registerJs("
     <div class="col-lg-9 col-md-8">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#news" data-toggle="tab">Hírek, információk</a></li>
-                <li><a href="#members" data-toggle="tab">Tagok</a></li>
+                <li class="active"><a href="#news" data-toggle="tab"><?= Yii::t('group', 'Posts') ?></a></li>
+                <li><a href="#members" data-toggle="tab"><?= Yii::t('group', 'Members') ?></a></li>
             </ul>
 
             <div class="tab-content">
@@ -139,7 +138,7 @@ $this->registerJs("
                     <?= ListView::widget([
                         'dataProvider' => $postsDataProvider,
                         'layout' => '{items}{pager}',
-                        'emptyText' => '<p>Nincsenek bejegyzések</p>',
+                        'emptyText' => '<p>' . Yii::t('group', 'There are no posts') . '</p>',
                         'options' => ['tag' => false],
                         'itemOptions' => ['tag' => 'div', 'class' => 'post clearfix'],
                         'itemView' => '_post',
@@ -150,7 +149,7 @@ $this->registerJs("
                     ]) ?>
 
                     <?php if (Yii::$app->user->can('manageGroups', ['group' => $model])): ?>
-                        <p><strong>Új bejegyzés írása</strong></p>
+                        <p><strong><?= Yii::t('group', 'New post') ?></strong></p>
                         <!-- uj poszt -->
                         <div>
                             <?php $form = ActiveForm::begin(); ?>
@@ -160,9 +159,9 @@ $this->registerJs("
                             <?= $form->field($postModel, 'content')->textArea(['rows' => 8, 'id' => 'summernote'])->label(false) ?>
 
                             <?php if (!Yii::$app->request->get('update_group_post')): ?>
-                                <?= Html::submitButton('Közzététel', ['class' => 'btn btn-success']) ?>
+                                <?= Html::submitButton(Yii::t('group', 'Submit'), ['class' => 'btn btn-success']) ?>
                             <?php else: ?>
-                                <?= Html::submitButton('Mentés', ['class' => 'btn btn-success']) ?>
+                                <?= Html::submitButton(Yii::t('group', 'Save'), ['class' => 'btn btn-success']) ?>
                                 <?= Html::a('Mégse', Url::current(['update_group_post' => null]), ['class' => 'btn btn-default']) ?>
                             <?php endif ?>
 
@@ -174,7 +173,7 @@ $this->registerJs("
                     <?= ListView::widget([
                         'dataProvider' => $usersDataProvider,
                         'layout' => '{items}{pager}',
-                        'emptyText' => '<p>Nincsenek tagok</p>',
+                        'emptyText' => '<p>' . Yii::t('group', 'There are no members') . '</p>',
                         'itemOptions' => ['tag' => 'p'],
                         'itemView' => function($model) {
                             if (Yii::$app->user->can('showUsers')) {

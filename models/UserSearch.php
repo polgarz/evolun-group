@@ -126,8 +126,13 @@ class UserSearch extends Model
             ->indexBy('id')
             ->column();
 
-        // majd hozzaadjuk az egyebet is
-        $groups[self::GROUP_OTHER] = 'Egyéb';
+        // majd hozzaadjuk az egyebet is, ha egyik sem eri el a kuszobot,
+        // akkor az egyeb csoportok vannak csak
+        if (count($groups)) {
+            $groups[self::GROUP_OTHER] = Yii::t('user', 'Other');
+        } else {
+            $groups = $this->otherGroups;
+        }
 
         $this->_groupList = $groups;
 

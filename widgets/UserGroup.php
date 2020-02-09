@@ -2,7 +2,7 @@
 namespace evolun\group\widgets;
 
 use Yii;
-use evolun\group\user\widgets\UserWidgetInterface;
+use evolun\user\widgets\UserWidgetInterface;
 use evolun\group\models\Group;
 
 /**

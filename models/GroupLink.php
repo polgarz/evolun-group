@@ -43,10 +43,9 @@ class GroupLink extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Név',
-            'url' => 'Url',
-            'group_id' => 'Csoport',
+            'name' => Yii::t('group', 'Name'),
+            'url' => Yii::t('group', 'Url'),
+            'group_id' => Yii::t('group', 'Group'),
         ];
     }
 

@@ -11,6 +11,11 @@ use evolun\group\models\{GroupPost, GroupUser};
 class GroupPosts extends \yii\base\Widget
 {
     /**
+     * @var string
+     */
+    public $groupModuleId = 'group';
+
+    /**
      * A felhasználó, akinek az adatait meg kell jeleníteni. Ha nincs megadva,
      * akkor az aktuális felhasználó adatait használja
      * @var User
@@ -22,6 +27,8 @@ class GroupPosts extends \yii\base\Widget
      */
     public function init()
     {
+        Yii::$app->getModule($this->groupModuleId);
+
         if (!$this->user) {
             $this->user = Yii::$app->user->identity;
         }
@@ -53,6 +60,7 @@ class GroupPosts extends \yii\base\Widget
             'user' => $this->user,
             'postsDataProvider' => $postsDataProvider,
             'hasGroups' => $hasGroups,
+            'groupModuleId' => $this->groupModuleId,
         ]);
     }
 }

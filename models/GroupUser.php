@@ -38,18 +38,6 @@ class GroupUser extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'user_id' => 'User ID',
-            'group_id' => 'Group ID',
-        ];
-    }
-
-    /**
      * @return \yii\db\ActiveQuery
      */
     public function getGroup()

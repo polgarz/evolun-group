@@ -115,7 +115,7 @@ class DefaultController extends Controller
 
             if ($postModel->load(Yii::$app->request->post())) {
                 if ($postModel->save()) {
-                    Yii::$app->session->setFlash('success', 'A bejegyzés sikeresen létrehozva');
+                    Yii::$app->session->setFlash('success', 'You successfully created the post');
 
                     // ha ujkent vitte fel, akkor resetelni kell a modelt, hogy ne toltse vissza a szovegeket
                     if (!$update_group_post) {
@@ -125,7 +125,7 @@ class DefaultController extends Controller
                         $this->redirect(['view', 'id' => $model->id]);
                     }
                 } else {
-                    Yii::$app->session->setFlash('danger', 'A bejegyzés létrehozása nem sikerült');
+                    Yii::$app->session->setFlash('danger', Yii::t('group', 'Something went wrong when you tried to create the post'));
                 }
             }
         }
@@ -153,9 +153,9 @@ class DefaultController extends Controller
             throw new NotFoundHttpException('Nincs ilyen poszt!');
         } else {
             if ($model->delete()) {
-                Yii::$app->session->setFlash('success', 'A bejegyzés sikeresen törölve');
+                Yii::$app->session->setFlash('success', Yii::t('group', 'You successfully deleted the post'));
             } else {
-                Yii::$app->session->setFlash('danger', 'A bejegyzés törlése nem sikerült');
+                Yii::$app->session->setFlash('danger', Yii::t('group', 'Something went wrong when you tried to delete the post'));
             }
 
         }
@@ -172,9 +172,9 @@ class DefaultController extends Controller
     {
         $model = $this->findModel($id);
         if ($model->addUser(Yii::$app->user->identity)) {
-            Yii::$app->session->setFlash('success', 'Sikeresen csatlakoztál a csoporthoz');
+            Yii::$app->session->setFlash('success', Yii::t('group', 'You successfully joined the group'));
         } else {
-            Yii::$app->session->setFlash('danger', 'Sikertelen csatlakozás');
+            Yii::$app->session->setFlash('danger', Yii::t('group', 'Something went wrong when you tried to join the group'));
         }
 
         return $this->redirect(['view', 'id' => $id]);
@@ -189,9 +189,9 @@ class DefaultController extends Controller
     {
         $model = $this->findModel($id);
         if ($model->removeUser(Yii::$app->user->identity)) {
-            Yii::$app->session->setFlash('success', 'Sikeresen kiléptél a csoportból');
+            Yii::$app->session->setFlash('success', Yii::t('group', 'You successfully left the group'));
         } else {
-            Yii::$app->session->setFlash('danger', 'Sikertelen kilépés');
+            Yii::$app->session->setFlash('danger', Yii::t('group', 'Something went wrong when you tried to leave the group'));
         }
 
         return $this->redirect(['view', 'id' => $id]);
@@ -242,7 +242,7 @@ class DefaultController extends Controller
                 }
             }
 
-            Yii::$app->session->setFlash('success', 'Sikeres létrehozás');
+            Yii::$app->session->setFlash('success', Yii::t('group', 'Create successful'));
 
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -306,7 +306,7 @@ class DefaultController extends Controller
                 }
             }
 
-            Yii::$app->session->setFlash('success', 'Sikeres módosítás');
+            Yii::$app->session->setFlash('success', Yii::t('group', 'Update successful'));
 
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -328,9 +328,9 @@ class DefaultController extends Controller
     public function actionDelete($id)
     {
         if ($this->findModel($id)->delete()) {
-            Yii::$app->session->setFlash('success', 'Sikeres törlés');
+            Yii::$app->session->setFlash('success', Yii::t('group', 'Delete successful'));
         } else {
-            Yii::$app->session->setFlash('danger', 'Sikertelen törlés');
+            Yii::$app->session->setFlash('danger', Yii::t('group', 'Delete unsuccesful'));
         }
 
         return $this->redirect(['index']);
@@ -348,6 +348,6 @@ class DefaultController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
     }
 }
