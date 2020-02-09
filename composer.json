@@ -1,0 +1,32 @@
+{
+    "name": "polgarz/evolun-group",
+    "description": "Group extension for Evolun",
+    "keywords": ["evolun", "group", "volunteering system", "volunteering", "volunteer"],
+    "type": "evolun-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/polgarz/evolun-group/issues",
+        "source": "https://github.com/polgarz/evolun-group"
+    },
+    "authors": [
+        {
+            "name": "Polgar Zoltan",
+            "email": "pzoltan@pzoltan.hu",
+            "homepage": "https://www.evolun.hu/"
+        }
+    ],
+    "require": {
+        "unclead/yii2-multiple-input": "~2.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "evolun\\group\\": ""
+        }
+    }
+}
