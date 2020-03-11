@@ -3,7 +3,7 @@ use yii\widgets\ListView;
 use yii\helpers\Url;
 ?>
 
-<div class="box box-primary">
+<div class="box box-default">
     <div class="box-header with-border">
         <h3 class="box-title"><?= Yii::t('group', 'Group posts') ?></h3>
     </div>
