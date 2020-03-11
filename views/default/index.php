@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'attribute' => 'name',
                     'format' => 'raw',
-                    'value' => function($model) {
+                    'value' => function ($model) {
                         $row = '<strong>' . $model->name . '</strong>';
                         $row .= '<div class="text-muted">' . Yii::t('group', 'Members: {members}', ['members' => count($model->groupUsers)]) . '</div>';
                         $row .= '<div class="text-muted">' . StringHelper::truncateWords($model->description, 15) . '</div>';

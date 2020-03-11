@@ -20,7 +20,6 @@ class m191010_210436_create_group_coordinator_table extends Migration
 
         $this->addForeignKey('fk_group_coordinator_user_id', '{{%group_coordinator}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'CASCADE');
         $this->addForeignKey('fk_group_coordinator_group_id', '{{%group_coordinator}}', 'group_id', '{{%group}}', 'id', 'CASCADE', 'CASCADE');
-
     }
 
     /**

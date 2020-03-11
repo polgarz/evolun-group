@@ -62,7 +62,9 @@ $this->registerJs("
                     <br />
                 <?php endif ?>
 
-                <?php if (!in_array(Yii::$app->user->id, array_map(function($item) { return $item->user_id; }, $model->groupUsers))): ?>
+                <?php if (!in_array(Yii::$app->user->id, array_map(function ($item) {
+    return $item->user_id;
+                }, $model->groupUsers))): ?>
                     <?= Html::a('<i class="fa fa-sign-in"></i> ' . Yii::t('group', 'Join the group'), ['join', 'id' => $model->id], ['class' => 'btn btn-success btn-block']) ?>
                 <?php else: ?>
                     <?= Html::a('<i class="fa fa-sign-out"></i> ' . Yii::t('group', 'Leave the group'), ['leave', 'id' => $model->id], ['class' => 'btn btn-warning btn-block']) ?>
@@ -80,7 +82,7 @@ $this->registerJs("
             <!-- /.box-header -->
             <div class="box-body no-padding">
                 <ul class="users-list clearfix">
-                    <?php foreach($model->groupCoordinators as $coordinator): ?>
+                    <?php foreach ($model->groupCoordinators as $coordinator): ?>
                         <li>
                             <img src="<?= $coordinator->user->getThumbUploadUrl('image', 's') ?>" class="img-circle" alt="Profilkép">
                             <?php if (Yii::$app->user->can('showUsers')): ?>
@@ -103,7 +105,7 @@ $this->registerJs("
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <?php foreach($model->groupLinks as $link): ?>
+                    <?php foreach ($model->groupLinks as $link): ?>
                         <p><a href="<?= $link->url ?>" target="_blank"><?= $link->name ?></a></p>
                     <?php endforeach ?>
                 </div>
@@ -175,7 +177,7 @@ $this->registerJs("
                         'layout' => '{items}{pager}',
                         'emptyText' => '<p>' . Yii::t('group', 'There are no members') . '</p>',
                         'itemOptions' => ['tag' => 'p'],
-                        'itemView' => function($model) {
+                        'itemView' => function ($model) {
                             if (Yii::$app->user->can('showUsers')) {
                                 return Html::a($model->user->name . ' (' . $model->user->nickname . ')', ['/user/default/view', 'id' => $model->user_id]);
                             } else {

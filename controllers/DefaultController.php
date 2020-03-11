@@ -3,7 +3,11 @@
 namespace evolun\group\controllers;
 
 use Yii;
-use evolun\group\models\{Group, GroupCoordinator, GroupLink, GroupUser, GroupPost};
+use evolun\group\models\Group;
+use evolun\group\models\GroupCoordinator;
+use evolun\group\models\GroupLink;
+use evolun\group\models\GroupUser;
+use evolun\group\models\GroupPost;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -33,7 +37,7 @@ class DefaultController extends Controller
                         'actions'    => ['update', 'delete', 'delete-group-post'],
                         'allow'      => true,
                         'roles'      => ['manageGroups'],
-                        'roleParams' => function($rule) {
+                        'roleParams' => function ($rule) {
                             $groups = Group::findOne(Yii::$app->request->get('id'));
 
                             if ($groups) {
@@ -103,7 +107,6 @@ class DefaultController extends Controller
 
         // ha van jogosultsaga egyaltalan a posztok szerkesztesehez
         if (Yii::$app->user->can('manageGroups', ['group' => $model])) {
-
             // megnezzuk, hogy kaptunk-e modositasra id-t, es letezik-e a poszt
             if ($update_group_post) {
                 $exists = GroupPost::findOne(['id' => $update_group_post, 'group_id' => $id]);
@@ -157,7 +160,6 @@ class DefaultController extends Controller
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('group', 'Something went wrong when you tried to delete the post'));
             }
-
         }
 
         return $this->redirect(['view', 'id' => $model->group_id]);
@@ -213,7 +215,7 @@ class DefaultController extends Controller
             // feltoltjuk a modelleket
             $groupCoordinatorList = [new GroupCoordinator(['group_id' => $model->id])];
             $count = count(Yii::$app->request->post('GroupCoordinator'));
-            for($i = 1; $i < $count; $i++) {
+            for ($i = 1; $i < $count; $i++) {
                 $groupCoordinatorList[] = new GroupCoordinator(['group_id' => $model->id]);
             }
 
@@ -228,7 +230,7 @@ class DefaultController extends Controller
             // feltoltjuk a modelleket
             $groupLinkList = [new GroupLink(['group_id' => $model->id])];
             $count = count(Yii::$app->request->post('GroupLink'));
-            for($i = 1; $i < $count; $i++) {
+            for ($i = 1; $i < $count; $i++) {
                 $groupLinkList[] = new GroupLink(['group_id' => $model->id]);
             }
 
@@ -275,7 +277,7 @@ class DefaultController extends Controller
             // feltoltjuk a modelleket
             $groupCoordinatorList = [new GroupCoordinator(['group_id' => $model->id])];
             $count = count(Yii::$app->request->post('GroupCoordinator'));
-            for($i = 1; $i < $count; $i++) {
+            for ($i = 1; $i < $count; $i++) {
                 $groupCoordinatorList[] = new GroupCoordinator(['group_id' => $model->id]);
             }
 
@@ -292,7 +294,7 @@ class DefaultController extends Controller
             // feltoltjuk a modelleket
             $groupLinkList = [new GroupLink(['group_id' => $model->id])];
             $count = count(Yii::$app->request->post('GroupLink'));
-            for($i = 1; $i < $count; $i++) {
+            for ($i = 1; $i < $count; $i++) {
                 $groupLinkList[] = new GroupLink(['group_id' => $model->id]);
             }
 

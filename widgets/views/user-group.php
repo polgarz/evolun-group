@@ -9,7 +9,7 @@ use yii\helpers\Html;
     <!-- /.box-header -->
     <div class="box-body">
         <?php if ($groups): ?>
-            <?php foreach($groups as $group): ?>
+            <?php foreach ($groups as $group): ?>
                 <p><a href="<?= Url::to(['/group/default/view', 'id' => $group->id]) ?>"><?= $group->name ?></a></p>
             <?php endforeach ?>
         <?php else: ?>

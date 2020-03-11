@@ -20,7 +20,6 @@ class m191010_210455_create_group_user_table extends Migration
 
         $this->addForeignKey('fk_user_group_user_id', '{{%group_user}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'CASCADE');
         $this->addForeignKey('fk_user_group_group_id', '{{%group_user}}', 'group_id', '{{%group}}', 'id', 'CASCADE', 'CASCADE');
-
     }
 
     /**

@@ -16,4 +16,4 @@ $this->params['breadcrumbs'][] = $this->title;
     'userList' => $userList,
     'groupCoordinatorList' => $groupCoordinatorList,
     'groupLinkList' => $groupLinkList,
-]) ?>
+]);

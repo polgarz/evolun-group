@@ -26,7 +26,6 @@ class GroupCoordinatorRule extends Rule
     public function execute($user, $item, $params)
     {
         if (isset($params['group'])) {
-
             if (!isset($this->_groupCoordinators[$params['group']->id])) {
                 $this->_groupCoordinators[$params['group']->id] = ArrayHelper::getColumn($params['group']->groupCoordinators, 'user_id');
             }

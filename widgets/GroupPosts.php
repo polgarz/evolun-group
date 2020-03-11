@@ -3,7 +3,8 @@ namespace evolun\group\widgets;
 
 use Yii;
 use yii\data\ActiveDataProvider;
-use evolun\group\models\{GroupPost, GroupUser};
+use evolun\group\models\GroupPost;
+use evolun\group\models\GroupUser;
 
 /**
  * A felhasználó csoportjai, és azok frissítései (dashboard widget)

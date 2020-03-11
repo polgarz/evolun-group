@@ -20,7 +20,7 @@ use yii\bootstrap\ActiveForm;
         </button>
         <ul class="dropdown-menu">
             <li><a href="javascript:;" onclick="$('#usersearch-group').val('');$('#user-search-form').submit();"><?= Yii::t('user', 'All groups') ?></a></li>
-            <?php foreach($searchModel->groupList as $id => $name): ?>
+            <?php foreach ($searchModel->groupList as $id => $name): ?>
                 <li><a href="javascript:;" onclick="$('#usersearch-group').val('<?= $id ?>');$('#user-search-form').submit();"><?= $name ?></a></li>
             <?php endforeach ?>
         </ul>

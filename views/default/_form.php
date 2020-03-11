@@ -50,7 +50,7 @@ use unclead\multipleinput\TabularColumn;
                         'name' => 'user_id',
                         'title' => Yii::t('group', 'Coordinators'),
                         'type'  => TabularColumn::TYPE_DROPDOWN,
-                        'items' => ArrayHelper::map($userList, 'id', function($model) {
+                        'items' => ArrayHelper::map($userList, 'id', function ($model) {
                             return $model->name . ($model->nickname ? ' (' . $model->nickname . ')' : '');
                         }),
                         'options' => ['prompt' => Yii::t('group', '- choose -')],

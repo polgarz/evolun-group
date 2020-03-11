@@ -19,7 +19,6 @@ class m191010_210501_create_group_link_table extends Migration
             'group_id' => $this->integer()->notNull(),
         ]);
         $this->addForeignKey('fk_group_link_group_id', '{{%group_link}}', 'group_id', '{{%group}}', 'id', 'CASCADE', 'CASCADE');
-
     }
 
     /**

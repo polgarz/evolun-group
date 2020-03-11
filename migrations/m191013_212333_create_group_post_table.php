@@ -26,7 +26,6 @@ class m191013_212333_create_group_post_table extends Migration
         $this->addForeignKey('fk_group_post_created_by', '{{%group_post}}', 'created_by', '{{%user}}', 'id', 'SET NULL', 'CASCADE');
         $this->addForeignKey('fk_group_post_updated_by', '{{%group_post}}', 'updated_by', '{{%user}}', 'id', 'SET NULL', 'CASCADE');
         $this->addForeignKey('fk_group_post_group_id', '{{%group_post}}', 'group_id', '{{%group}}', 'id', 'CASCADE', 'CASCADE');
-
     }
 
     /**

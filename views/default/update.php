@@ -17,4 +17,4 @@ $this->params['pageHeader'] = ['title' => $this->title];
     'userList' => $userList,
     'groupCoordinatorList' => $groupCoordinatorList,
     'groupLinkList' => $groupLinkList,
-]) ?>
+]);
